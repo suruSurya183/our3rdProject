@@ -7,7 +7,7 @@ const router = express.Router();
 router.post('/', categoryController.insertCategory);
 
 // all categorys
-router.get('/categories', categoryController.ListCategorys);
+router.get('/', categoryController.ListCategorys);
 
 /* show */
 router.get('/:id', categoryController.showCategory);

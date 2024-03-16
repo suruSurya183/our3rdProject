@@ -5,6 +5,7 @@ import cors from "cors";
 import { fileURLToPath } from "url";
 import Connection from "./database/db.js";
 import categoryRouter from "./routes/category.route.js";
+import vendorRouter from "./routes/vendor.route.js";
 
 /********************************************/
 const app = express();
@@ -23,6 +24,7 @@ app.use("/", express.static(__dirname + "/public"));
 
 /*******************ROUTES******************/
 app.use("/category", categoryRouter);
+app.use("/vendor", vendorRouter);
 
 /*******************ROUTES******************/
 
