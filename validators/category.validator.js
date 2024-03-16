@@ -1,15 +1,17 @@
-import Joi from "joi";
+import Joi from "@hapi/joi";
 
 // Validate the category data
 export function validateCreateCategory(categoryData) {
   const categorySchema = Joi.object({
     categoryName: Joi.string().required(),
-    description: Joi.string()
+    description: Joi.string(),
   });
 
   const { error } = categorySchema.validate(categoryData);
   if (error) {
-    const errorMessage = error.details.map((detail) => detail.message).join(", ");
+    const errorMessage = error.details
+      .map((detail) => detail.message)
+      .join(", ");
     throw new Error(errorMessage);
   }
   return { error };
@@ -18,12 +20,14 @@ export function validateCreateCategory(categoryData) {
 // Validate the update data
 export function validateUpdateCategory(updateData) {
   const categorySchema = Joi.object({
-    description: Joi.string().required()
+    description: Joi.string().required(),
   });
 
   const { error } = categorySchema.validate(updateData);
   if (error) {
-    const errorMessage = error.details.map((detail) => detail.message).join(", ");
+    const errorMessage = error.details
+      .map((detail) => detail.message)
+      .join(", ");
     throw new Error(errorMessage);
   }
   return { error };

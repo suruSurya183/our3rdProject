@@ -1,4 +1,4 @@
-import Joi from "joi";
+import Joi from "@hapi/joi";
 
 // Joi schema for FAQ validation
 const faqSchema = Joi.object({
