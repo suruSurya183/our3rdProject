@@ -5,6 +5,8 @@ import cors from "cors";
 import { fileURLToPath } from "url";
 import Connection from "./database/db.js";
 import categoryRouter from "./routes/category.route.js";
+import faqRouter from "./routes/faq.route.js";
+import userRouter from "./routes/user.route.js";
 
 /********************************************/
 const app = express();
@@ -22,7 +24,9 @@ const __dirname = path.dirname(__filename); // Get directory name using import.m
 app.use("/", express.static(__dirname + "/public"));
 
 /*******************ROUTES******************/
+app.use("/user", userRouter);
 app.use("/category", categoryRouter);
+app.use("/faq", faqRouter);
 
 /*******************ROUTES******************/
 
