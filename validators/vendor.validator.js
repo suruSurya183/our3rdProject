@@ -1,5 +1,5 @@
 // vendorValidation.js
-import Joi from 'joi';
+import Joi from '@hapi/joi';
 
 // Validate the vendor data
 export function validateCreateVendor(vendorData) {

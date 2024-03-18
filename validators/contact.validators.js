@@ -1,4 +1,4 @@
-import Joi from 'joi';
+import Joi from '@hapi/joi';
 
 // Validate the contact data
 export function validateContact(contactData) {

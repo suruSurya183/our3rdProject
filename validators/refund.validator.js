@@ -1,4 +1,4 @@
-import joi from 'joi';
+import joi from '@hapi/joi';
 
 // Validate the refund data
 export function validateRefund(refundData) {
