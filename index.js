@@ -5,9 +5,10 @@ import cors from "cors";
 import { fileURLToPath } from "url";
 import Connection from "./database/db.js";
 import categoryRouter from "./routes/category.route.js";
-
+import fileupload from "express-fileupload";
 import faqRouter from "./routes/faq.route.js";
 import userRouter from "./routes/user.route.js";
+import productRouter from "./routes/product.route.js";
 import reviewRouter from "./routes/review.route.js";
 import wishlistRouter from "./routes/wishlist.route.js";
 
@@ -28,9 +29,11 @@ app.use(express.urlencoded({ extended: false }));
 const __filename = fileURLToPath(import.meta.url); // Get directory name using import.meta.url
 const __dirname = path.dirname(__filename); // Get directory name using import.meta.url
 app.use("/", express.static(__dirname + "/public"));
+app.use(fileupload());
 
 /*******************ROUTES******************/
 app.use("/user", userRouter);
+app.use("/product", productRouter);
 app.use("/review", reviewRouter);
 app.use("/wishlist",wishlistRouter );
 app.use("/category", categoryRouter);
