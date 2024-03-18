@@ -11,10 +11,8 @@ const userSchema = new Schema(
       required: true,
     },
     contactNumber: {
-      type: String,
+      type: Number,
       required: [true, "Contact is required"],
-      minLength: [10, "Contact should be atleast 10 character long"],
-      maxLength: [10, "Contact should not exceed 10 character"],
     },
     emailAddress: {
       type: String,
@@ -28,22 +26,10 @@ const userSchema = new Schema(
     password: {
       type: String,
       required: [true, "Password is required"],
-      maxLength: [15, "Password should not exceed more than 15 characters"],
-      minLength: [6, "Password should have atleast 6 characters"],
-      match: [
-        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,1024}$/,
-        "Please fill a valid Password",
-      ],
     },
     confirmPassword: {
       type: String,
       required: [true, "Password is required"],
-      maxLength: [15, "Password should not exceed more than 15 characters"],
-      minLength: [6, "Password should have atleast 6 characters"],
-      match: [
-        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,1024}$/,
-        "Please fill a valid Password",
-      ],
     },
     disabled: { type: Boolean, default: false },
   },

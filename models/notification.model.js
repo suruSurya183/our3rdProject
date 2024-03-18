@@ -15,7 +15,8 @@ const notificationSchema = new mongoose.Schema({
     type: Boolean,
     default: false
   }
-});
+},{ timestamps: true,}
+);
 
 // Define a model based on the schema
 const Notification = mongoose.model('Notification', notificationSchema);

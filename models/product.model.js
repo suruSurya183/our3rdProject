@@ -10,6 +10,8 @@ const productSchema = new Schema(
       required: true,
     },
     venderId: { type: Schema.Types.ObjectId, ref: "Vendor", required: true },
+    reviewId: [{ type: Schema.Types.ObjectId, ref: "Review" }],
+
     itemId: { type: String },
     itemName: { type: String, required: true },
     description: { type: String, required: true },

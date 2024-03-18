@@ -12,33 +12,14 @@ const userInsertionSchema = Joi.object({
     "any.required": `Type is required`,
     "any.only": `Type must be one of: Admin, Customer, Staff`,
   }),
-  contactNumber: Joi.string().min(10).max(10).required().messages({
-    "string.base": `Contact Number must be a string`,
-    "string.empty": `Contact Number cannot be empty`,
-    "string.min": `Contact Number should be at least {{#limit}} characters long`,
-    "string.max": `Contact Number should not exceed {{#limit}} characters`,
-    "any.required": `Contact Number is required`,
-  }),
+  contactNumber: Joi.number().required(),
   emailAddress: Joi.string().email().required().messages({
     "string.base": `Email Address must be a string`,
     "string.empty": `Email Address cannot be empty`,
     "string.email": `Please provide a valid email address`,
     "any.required": `Email Address is required`,
   }),
-  password: Joi.string()
-    .min(6)
-    .max(15)
-    .required()
-    .pattern(
-      new RegExp("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,1024}$")
-    )
-    .messages({
-      "string.base": `Password must be a string`,
-      "string.empty": `Password cannot be empty`,
-      "string.min": `Password should have at least {{#limit}} characters`,
-      "string.max": `Password should not exceed {{#limit}} characters`,
-      "string.pattern.base": `Password must contain at least one lowercase letter, one uppercase letter, one digit, and one special character (!@#$%^&*)`,
-    }),
+  password: Joi.string().min(6).max(15).required(),
   confirmPassword: Joi.string().valid(Joi.ref("password")).required().messages({
     "any.only": `Password and Confirm Password must match`,
   }),
@@ -55,10 +36,7 @@ const userUpdateSchema = Joi.object({
   type: Joi.string().valid("Admin", "Customer", "Staff").messages({
     "any.only": `Type must be one of: Admin, Customer, Staff`,
   }),
-  contactNumber: Joi.string().min(10).max(10).messages({
-    "string.min": `Contact Number should be at least {{#limit}} characters long`,
-    "string.max": `Contact Number should not exceed {{#limit}} characters`,
-  }),
+  contactNumber: Joi.number().max(10),
   emailAddress: Joi.string().email().messages({
     "string.email": `Please provide a valid email address`,
   }),
