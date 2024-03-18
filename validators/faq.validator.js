@@ -2,14 +2,14 @@ import Joi from "@hapi/joi";
 
 // Joi schema for FAQ validation
 const faqSchema = Joi.object({
-  title: Joi.string().required(),
+  
   question: Joi.string().required(),
   answer: Joi.string().required(),
 });
 
 // Joi schema for FAQ update validation
 const faqUpdateSchema = Joi.object({
-  title: Joi.string().required(),
+  
   question: Joi.string(),
   answer: Joi.string(),
 });
