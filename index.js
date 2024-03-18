@@ -8,6 +8,7 @@ import categoryRouter from "./routes/category.route.js";
 import faqRouter from "./routes/faq.route.js";
 import userRouter from "./routes/user.route.js";
 import reviewRouter from "./routes/review.route.js";
+import wishlistRouter from "./routes/wishlist.route.js";
 
 /********************************************/
 const app = express();
@@ -27,6 +28,7 @@ app.use("/", express.static(__dirname + "/public"));
 /*******************ROUTES******************/
 app.use("/user", userRouter);
 app.use("/review", reviewRouter);
+app.use("/wishlist",wishlistRouter );
 app.use("/category", categoryRouter);
 app.use("/faq", faqRouter);
 
