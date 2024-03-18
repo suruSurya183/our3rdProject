@@ -10,7 +10,7 @@ const feedbackSchema = new mongoose.Schema({
   comment: {
     type: String,
   }
-});
+},{ timestamps: true,});
 
 // Define a model based on the schema
 const Feedback = mongoose.model('Feedback', feedbackSchema);

@@ -31,37 +31,40 @@ export async function insertOrder(req, res) {
 }
 
 
-//upeate order
-export async function updateOrder(req, res) {
+//Update order BY ID
+export async function updateOrder(req, res, next) {
   try {
-    const orderDataToUpdate = req.body;
-    console.log("orderDataToUpdate", orderDataToUpdate);
+      const id = req.params.id;
+      const orderDataToUpdate = req.body;
 
-    // Validate order data before update
-    const { error } = validateupdateOrder(orderDataToUpdate);
-    if (error) {
-      return res.status(400).json({ error: error.message });
-    }
+      // Validate the  order data
+      const { error } = validateupdateOrder(orderDataToUpdate);
+      if (error) {
+          return res.status(400).json({ error: error.message });
+      }
 
-    // Update order
-    const updatedOrder = await Order.findByIdAndUpdate(
-      req.params.id,
-      orderDataToUpdate,
-      { new: true }
-    );
-    console.log("updatedOrder", updatedOrder);
+      // Get the existing  order by ID using Mongoose
+      const existingOrder = await Order.findOne({ _id: id });
 
-    // Send Response
-    res
-      .status(200)
-      .json({ message: "order data updated", datashow: updatedOrder });
+      if (!existingOrder) {
+          return res.status(404).json({ message: ' cart not found' });
+      }
+
+      // Update only the fields that are present in the request body
+      Object.assign(existingOrder, orderDataToUpdate);
+
+      // Save the updated  order
+      const updatedorder = await existingOrder.save();
+
+      // Send the updated  order as JSON response
+      res.status(200).json({ message: ' cart successfully',  cartShow: updatedorder });
+
   } catch (error) {
-    return res.status(500).json({
-      success: false,
-      message: error.message || "Something went wrong",
-    });
+      // Send Error Response
+      res.status(500).json({ error: error.message });
   }
 }
+
 
 //show order by id
 export async function showOrder(req, res) {

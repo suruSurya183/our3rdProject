@@ -26,7 +26,7 @@ const contactSchema = new mongoose.Schema({
     type: String,
     required: true
   }
-});
+},{ timestamps: true,});
 
 // Define a model based on the schema
 const Contact = mongoose.model('Contact', contactSchema);

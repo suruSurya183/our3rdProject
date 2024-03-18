@@ -16,6 +16,8 @@ import  feedbackRouter from "./routes/feedback.route.js";
 import refundRouter from "./routes/refund.route.js";
 import paymentRouter from "./routes/payment.route.js";
 import orderRouter from "./routes/order.route.js";
+import cartRouter from "./routes/cart.route.js";
+
 
 
 /********************************************/
@@ -46,6 +48,8 @@ app.use("/feeedback",feedbackRouter)
 app.use("/refund", refundRouter)
 app.use("/payment", paymentRouter)
 app.use("/order", orderRouter)
+app.use("/cart", cartRouter)
+
 
 
 /*******************ROUTES******************/
