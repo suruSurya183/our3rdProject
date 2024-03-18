@@ -23,7 +23,9 @@ const refundSchema = new mongoose.Schema({
     enum: ['Requested', 'Processing', 'Completed', 'Cancelled'],
     required: true
   }
-});
+},
+{ timestamps: true,}
+);
 
 const Refund = mongoose.model('Refund', refundSchema);
 
