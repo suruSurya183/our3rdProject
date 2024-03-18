@@ -7,6 +7,10 @@ import Connection from "./database/db.js";
 import categoryRouter from "./routes/category.route.js";
 import vendorRouter from "./routes/vendor.route.js";
 import trackingRouter from "./routes/tracking.route.js";
+import faqRouter from "./routes/faq.route.js";
+import userRouter from "./routes/user.route.js";
+import reviewRouter from "./routes/review.route.js";
+import wishlistRouter from "./routes/wishlist.route.js";
 
 
 /********************************************/
@@ -28,6 +32,10 @@ app.use("/", express.static(__dirname + "/public"));
 app.use("/category", categoryRouter);
 app.use("/vendor", vendorRouter);
 app.use("/tracking", trackingRouter);
+app.use("/faq", faqRouter);
+app.use("/user", userRouter);
+app.use("/review", reviewRouter);
+app.use("/wishlist",wishlistRouter );
 
 
 /*******************ROUTES******************/
