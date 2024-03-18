@@ -1,4 +1,4 @@
-import Joi from 'joi';
+import Joi from '@hapi/joi';
 
 // Validate the notification data
 export function validateNotification(notificationData) {

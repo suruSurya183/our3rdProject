@@ -1,4 +1,4 @@
-import Joi from 'joi';
+import Joi from '@hapi/joi';
 
 // Validate the feedback data
 export function validateFeedback(feedbackData) {
