@@ -73,3 +73,26 @@ export const deleteUser = async (req, res) => {
     res.status(500).send(err);
   }
 };
+
+export async function searchUser(req, res) {
+  try {
+    const searchQuery = req.query.q; // Get the search query from the request query params
+    const searchRegex = new RegExp(searchQuery, 'i'); // Create case-insensitive regex pattern for searching
+
+    // Find users that match any field using the regex pattern
+    const users = await UserModel.find({
+      $or: [
+        { userName: searchRegex },
+        { emailAddress: searchRegex },
+      ],
+    });
+
+    if (!users || users.length === 0) {
+      return res.status(404).json({ message: "No users found" });
+    }
+
+    res.status(200).json({ users });
+  } catch (error) {
+    res.status(500).json({ message: "Something went wrong", error: error.message });
+  }
+}
