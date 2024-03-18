@@ -8,7 +8,6 @@ import categoryRouter from "./routes/category.route.js";
 
 import fileupload from "express-fileupload";
 
-import vendorRouter from "./routes/vendor.route.js";
 import trackingRouter from "./routes/tracking.route.js";
 
 import faqRouter from "./routes/faq.route.js";

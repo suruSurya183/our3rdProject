@@ -20,7 +20,9 @@ const paymentSchema = new mongoose.Schema({
     enum: ['CreditCard', 'DebitCard', 'NetBanking', 'UPI'],
     required: true
   }
-});
+},
+{ timestamps: true,}
+);
 
 const Payment = mongoose.model('Payment', paymentSchema);
 
