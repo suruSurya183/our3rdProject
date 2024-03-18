@@ -5,7 +5,7 @@ export function validatePayment(paymentData) {
     const paymentSchema = Joi.object({
         orderId: Joi.string().required(), // Adjusted to match Mongoose schema
         amount: Joi.number().required(),
-        paymentStatus: Joi.string().valid('Pending', 'Completed', 'Failed').required(),
+        paymentStatus: Joi.string().valid('Pending', 'Completed', 'Failed').required().default("pending"),
         paymentMethod: Joi.string().valid('CreditCard', 'DebitCard', 'NetBanking', 'UPI').required()
     });
 
