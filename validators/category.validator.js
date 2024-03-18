@@ -3,6 +3,7 @@ import Joi from "@hapi/joi";
 // Validate the category data
 export function validateCreateCategory(categoryData) {
   const categorySchema = Joi.object({
+    parentCategory: Joi.string(),
     categoryName: Joi.string().required(),
     description: Joi.string(),
   });
@@ -20,7 +21,11 @@ export function validateCreateCategory(categoryData) {
 // Validate the update data
 export function validateUpdateCategory(updateData) {
   const categorySchema = Joi.object({
-    description: Joi.string().required(),
+
+
+    categoryName: Joi.string().optional(),
+    description: Joi.string().optional()
+
   });
 
   const { error } = categorySchema.validate(updateData);
