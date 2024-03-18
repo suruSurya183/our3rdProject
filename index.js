@@ -16,7 +16,6 @@ import userRouter from "./routes/user.route.js";
 import productRouter from "./routes/product.route.js";
 import reviewRouter from "./routes/review.route.js";
 import wishlistRouter from "./routes/wishlist.route.js";
-import vendorRouter from "./routes/vendor.route.js";
 import contactRouter from "./routes/contact.route.js";
 import notificationRouter from "./routes/notification.route.js";
 import  feedbackRouter from "./routes/feedback.route.js";
@@ -53,7 +52,6 @@ app.use("/review", reviewRouter);
 app.use("/wishlist",wishlistRouter );
 app.use("/category", categoryRouter);
 app.use("/faq", faqRouter);
-app.use("/vendor", vendorRouter);
 app.use("/contact", contactRouter);
 app.use("/notification", notificationRouter)
 app.use("/feeedback",feedbackRouter)
