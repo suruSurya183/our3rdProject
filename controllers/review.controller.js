@@ -3,6 +3,7 @@ import {
   validateReviewInsertion,
   validateReviewUpdate,
 } from "../validators/review.validator.js";
+import Product from "../models/product.model.js";
 
 export const createReview = async (req, res) => {
   const { error } = validateReviewInsertion(req.body);
@@ -11,7 +12,12 @@ export const createReview = async (req, res) => {
   try {
     const review = new Review(req.body);
     const savedReview = await review.save();
-    res.status(201).json({message:"review created successfully",Data:savedReview});
+    const product = await Product.findById(review.productId);
+     product.reviewId.push(review._id);
+     await product.save();
+    res
+      .status(201)
+      .json({ message: "review created successfully", Data: savedReview });
   } catch (err) {
     res.status(500).send(err);
   }
@@ -20,7 +26,7 @@ export const createReview = async (req, res) => {
 export const getReviews = async (req, res) => {
   try {
     const reviews = await Review.find();
-    res.json({message:"All reviews",Data: reviews});
+    res.json({ message: "All reviews", Data: reviews });
   } catch (err) {
     res.status(500).send(err);
   }
@@ -30,7 +36,7 @@ export const getReviewById = async (req, res) => {
   try {
     const review = await Review.findById(req.params.id);
     if (!review) return res.status(404).send("Review not found");
-    res.json({message:"single review",Data:review});
+    res.json({ message: "single review", Data: review });
   } catch (err) {
     res.status(500).send(err);
   }
@@ -47,7 +53,7 @@ export const updateReview = async (req, res) => {
       { new: true }
     );
     if (!updatedReview) return res.status(404).send("Review not found");
-    res.json({message:"review updated successfully",Data:updatedReview});
+    res.json({ message: "review updated successfully", Data: updatedReview });
   } catch (err) {
     res.status(500).send(err);
   }
@@ -57,7 +63,7 @@ export const deleteReview = async (req, res) => {
   try {
     const deletedReview = await Review.findByIdAndDelete(req.params.id);
     if (!deletedReview) return res.status(404).send("Review not found");
-    res.json({message:"review deleted successfully"});
+    res.json({ message: "review deleted successfully" });
   } catch (err) {
     res.status(500).send(err);
   }
